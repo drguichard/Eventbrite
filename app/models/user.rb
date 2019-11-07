@@ -8,10 +8,10 @@ class User < ApplicationRecord
 	has_many :events
 	has_many :events, through: :attendances
 	  
-   # after_create :welcome_send #après création d'un user faire appele à la méthide welcome send
+   # after_create :welcome_send
 
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now #appeler le mailer UserMailer en lui faisant exécuter welcome_email avec, pour seule entrée, l'instance créée (d'où le self); deliver_now pour envoyer immédiatement l’e-mail. Il est possible d'utiliser un deliver_later
+    UserMailer.welcome_email(self).deliver_now 
   end
 
 
