@@ -1,19 +1,58 @@
-require 'faker'
-p "---------- START CLEAN THE DATABASE ----------"
+p "---------- START CLEAN THE DATABASE ----------".colorize(:red)
 User.destroy_all
-p "Users are clean"
+p "Users are clean".colorize(:red)
 Event.destroy_all
-p "Events are clean"
+p "Events are clean".colorize(:red)
 #Attendance.destroy_all
-#p "Attendances are clean"
-p "---------- END CLEAN THE DATABASE ----------"
-p "---------------- START SEED ----------------"
+#p "Attendances are clean".colorize(:red)
+p "---------- END CLEAN THE DATABASE ----------".colorize(:red)
+p ""
+p ""
+p "---------------- START SEED ----------------".colorize(:yellow)
+p ""
+sleep(2)
 
-20.times do
-	Event.create(start_date: Faker::Date.forward(days: 365), duration: rand(6..1000)*5, administrator_id: User.all.sample.id, price: rand(5..1000), description:Faker::Lorem.paragraph, title: Faker::Movies::StarWars.quote, location: Faker::Address.city)
+10.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  User.create!(
+    first_name: first_name,
+    last_name: last_name,
+    password: Faker::Internet.password(min_length: 8),
+    email: Faker::Internet.email(name: "#{last_name} #{first_name}", separators: '.')
+  )
 end
-puts 'Events created'
 
-User.create(first_name: "Loulou", last_name:Faker::Name.last_name, description:Faker::Lorem.paragraph, email: "loulou@yopmail.com",password:"password", password_confirmation:"password")
-puts 'User created'
+tp User.all
+p "\nThe database has now #{User.count} users\n".colorize(:yellow)
+sleep(5)
 
+duration = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
+20.times do
+  Event.create!(
+    start_date: Faker::Date.forward(days: 15),
+    duration: duration.sample.to_i,
+    title: Faker::GreekPhilosophers.quote,
+    description: Faker::Lorem.sentence(word_count: 15, supplemental: true, random_words_to_add: 30),
+    price: Faker::Commerce.price,
+    location: Faker::Address.full_address
+    # administrator:
+  )
+end
+
+tp Event.all
+p "\nThe database has now #{Event.count} events\n".colorize(:yellow)
+sleep(5)
+
+#30.times do
+#  Attendance.create!(
+#    user: User.all.sample,
+#    event: Event.all.sample
+#  )
+#end
+
+#tp Attendance.all
+#p "\nThe database has now #{Attendance.count} attendances\n".colorize(:yellow)
+#sleep(5)
+
+p "---------------- END SEED ----------------".colorize(:green)
