@@ -1,14 +1,14 @@
-p "---------- START CLEAN THE DATABASE ----------".colorize(:red)
+p "---------- START CLEAN THE DATABASE ----------"
 User.destroy_all
-p "Users are clean".colorize(:red)
+p "Users are clean"
 Event.destroy_all
-p "Events are clean".colorize(:red)
+p "Events are clean"
 #Attendance.destroy_all
 #p "Attendances are clean".colorize(:red)
-p "---------- END CLEAN THE DATABASE ----------".colorize(:red)
+p "---------- END CLEAN THE DATABASE ----------"
 p ""
 p ""
-p "---------------- START SEED ----------------".colorize(:yellow)
+p "---------------- START SEED ----------------"
 p ""
 sleep(2)
 
@@ -24,7 +24,7 @@ sleep(2)
 end
 
 tp User.all
-p "\nThe database has now #{User.count} users\n".colorize(:yellow)
+p "\nThe database has now #{User.count} users\n"
 sleep(5)
 
 duration = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
@@ -41,7 +41,7 @@ duration = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 end
 
 tp Event.all
-p "\nThe database has now #{Event.count} events\n".colorize(:yellow)
+p "\nThe database has now #{Event.count} events\n"
 sleep(5)
 
 #30.times do
@@ -55,4 +55,4 @@ sleep(5)
 #p "\nThe database has now #{Attendance.count} attendances\n".colorize(:yellow)
 #sleep(5)
 
-p "---------------- END SEED ----------------".colorize(:green)
+p "---------------- END SEED ----------------"
