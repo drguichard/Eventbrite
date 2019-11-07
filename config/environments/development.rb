@@ -60,6 +60,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   #letter opener gem config : 
-  config.action_mailer.delivery_method = :letter_opener
+  #config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  #devise quand tu cliqueras sur "réinitialiser mon mot de passe" pour la tester, l'application ne plantera pas. 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end
