@@ -1,2 +1,28 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<header class="jumbotron my-7">
+    <h1 class="display-4 text-light mt-4">Salut ça brite ?</h1>
+    <p class="lead text-light">Organisez des évènements ou rejoignez les évènements près de chez vous</p>
+  </header>
+  <div class="row p-5 mt-4 mb-4 bg-light text-dark">
+    <h2><% if @events.size >1%>
+        <%="Le site propose #{@events.size} events à venir :"%>
+      <%else%>
+        <%="Il n'y a pas grand chose à faire là, prends un bouquin en attendant"%>
+      <%end%></h2>
+  </div> 
+  <div class="card-deck mx-3">
+  <% @events.all.each do |event| %>
+     <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h4 class="card-title"><%=event.title%></h4>
+          <p class="card-text"><%=event.description%></p>
+        </div>
+        <div class="card-footer">
+          <a class="btn btn-danger" <%= link_to "Voir +"%>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  </div>
+  </div>
+
