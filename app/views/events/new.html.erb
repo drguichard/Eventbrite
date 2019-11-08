@@ -1,0 +1,40 @@
+    <form>
+        <div class="form-group">
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
+        <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
+
+        <%= label_tag 'Titre' %>
+        <div class="form-label-group">
+        <%= text_field_tag 'title', value = nil, placeholder: 'un titre quoi' %>
+        </div>
+
+        <%= label_tag "La description" %>
+        <div class="form-label-group">
+          <%= text_area_tag 'description', value = nil, placeholder: 'Décris ton event' %>
+        </div>
+
+        <%= label_tag 'La date' %>
+        <div class="form-label-group">
+          <%= date_field_tag 'start_date', value = nil, placeholder: 'Quand ça ?' %>
+        </div>
+
+        <%= label_tag 'Durée (en minutes)' %>
+        <div class="form-label-group->
+          <%= text_field_tag 'duration', value = nil, placeholder: 'Ca dure longtemps ?' %>
+        </div>
+
+        <%= label_tag 'Le lieu' %>
+        <div class="form-label-group">
+        <%= text_field_tag 'location', value = nil, placeholder: 'Adresse' %>
+        </div>
+
+        <%= label_tag 'Le prix' %>
+        <div class="form-label-row">
+        <%= text_field_tag 'price', value = nil, placeholder: 'Coût par participant' %>
+        </div>
+
+        <%= submit_tag "Créer l'Event", class: 'btn btn-lg btn-primary btn-block text-uppercase my-3' %>
+      <% end %>
+
+        </div>
+    </form>

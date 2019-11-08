@@ -30,4 +30,4 @@ puts 'User created'
 		location: Faker::Address.city
 		)
 end
-puts 'The database has now #{Event.count} events'
+puts 'Events created'
