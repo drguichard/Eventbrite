@@ -23,7 +23,7 @@ puts 'User created'
 Event.create(
 	start_date: Faker::Date.forward(days: 365),
 	duration: rand(6..100)*5,
-	administrator_id: "8",
+	administrator_id: User.administrator_id(first_name: "Thibault"),
 	price: rand(5..1000),
 	description:Faker::Lorem.paragraph,
 	title: Faker::Movies::StarWars.quote,
