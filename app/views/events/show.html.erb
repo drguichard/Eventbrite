@@ -1,0 +1,25 @@
+
+            <%=@event.title%>
+            <%=@event.description%>
+              <span>Par:  </span><a class="card-text text-muted" <%= link_to "#{administrator(@event).first_name} #{administrator(@event).first_name}", user_path(admin(@event).id)%><br/><br/>
+              <% if user_signed_in? && @event.admin_id == current_user.id%>
+                <a class="btn btn-danger" <%= link_to "Voir mon event", event_attendances_path(@event.id)%>
+              <% elsif user_signed_in? && @event.users.ids.include?(current_user.id)%>
+                <div class="text-muted font-weight-bold">Vous êtes inscrit à cet event.</div>
+              <%elsif user_signed_in?%>
+                <a class="btn btn-danger" <%= link_to "S'inscrire", new_event_attendance_charge_path(@event.id,current_user.id)%>
+              <%end%>
+            </div>
+        
+                <div class="card-header bg-danger text-center text-light">
+                  Détails de l'évenement
+            </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Lieu : <%=@event.location%></li>
+                  <li class="list-group-item">Date : <%=@event.start_date.to_date%></li>
+                  <li class="list-group-item">Durée : <%=@event.duration%> minutes</li>
+                  <li class="list-group-item">Prix : <%=@event.price%> euros (only!)</li>
+                  <li class="list-group-item">Il y a déjà <%=@event.attendances.size%> inscrit(s)</li>
+                </ul>
+             </div>
+          

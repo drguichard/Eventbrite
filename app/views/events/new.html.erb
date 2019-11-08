@@ -1,40 +1,46 @@
-    <form>
-        <div class="form-group">
-        <%= form_tag url_for(action: 'create'), method: "post" do %>
+<header class="jumbotron my-7">
+        <h1 class="display-4 text-light mt-4">Bah alors ?</h1>
+        <p class="lead text-light">Tu veux créer un event ? c'est ici que ça se passe :</p>
+      </header>
+
+<div class="container">
+<form>
+<div class="form-group">
+    <%= form_tag url_for(action: 'create'), method: "post" do %>
         <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
 
         <%= label_tag 'Titre' %>
         <div class="form-label-group">
         <%= text_field_tag 'title', value = nil, placeholder: 'un titre quoi' %>
-        </div>
+        </div><br>
 
-        <%= label_tag "La description" %>
+        <%= label_tag "Description" %>
         <div class="form-label-group">
           <%= text_area_tag 'description', value = nil, placeholder: 'Décris ton event' %>
-        </div>
+        </div><br>
 
-        <%= label_tag 'La date' %>
+        <%= label_tag 'Date' %>
         <div class="form-label-group">
           <%= date_field_tag 'start_date', value = nil, placeholder: 'Quand ça ?' %>
-        </div>
+        </div><br>
 
-        <%= label_tag 'Durée (en minutes)' %>
-        <div class="form-label-group->
+        <%= label_tag 'Durée en minutes !!!' %>
+        <div class="form-label-group">
           <%= text_field_tag 'duration', value = nil, placeholder: 'Ca dure longtemps ?' %>
-        </div>
+        </div><br>
 
-        <%= label_tag 'Le lieu' %>
+        <%= label_tag 'Lieu' %>
         <div class="form-label-group">
         <%= text_field_tag 'location', value = nil, placeholder: 'Adresse' %>
-        </div>
+        </div><br>
 
-        <%= label_tag 'Le prix' %>
-        <div class="form-label-row">
+        <%= label_tag 'Prix' %>
+        <div class="form-label-group">
         <%= text_field_tag 'price', value = nil, placeholder: 'Coût par participant' %>
-        </div>
-
-        <%= submit_tag "Créer l'Event", class: 'btn btn-lg btn-primary btn-block text-uppercase my-3' %>
-      <% end %>
-
-        </div>
-    </form>
+        </div><br>
+    </<div>
+        <%= submit_tag "Créer l'Event", class: 'btn btn-lg btn-danger btn-block text-uppercase my-3' %>
+    <% end %>
+    </div>
+</form>
+</div>
