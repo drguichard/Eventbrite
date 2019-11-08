@@ -11,28 +11,13 @@ p ""
 p "---------------- START SEED ----------------"
 p ""
 User.create(
-	first_name: "Thibault",
-	last_name: "Guichard",
-	description: "Semi-professionnel en AquaPoneyBall j'organise des tournois de bilboquet",
+	first_name: Faker::Name.first_name,
+	last_name:Faker::Name.last_name,
+	description:Faker::Lorem.paragraph,
 	email: "tguichard8@hotmail.com",
-	password:"password"
+	password:"testtest"
 )
 puts 'User created'
-
-3.times do
-Event.create(
-	start_date: Faker::Date.forward(days: 365),
-	duration: rand(6..100)*5,
-	administrator_id: User.all.sample.id,	
-	price: rand(5..1000),
-	description:Faker::Lorem.paragraph,
-	title: Faker::Movies::StarWars.quote,
-	location: Faker::Address.city
-	)
-end
-puts 'Events de adminitrator created'
-
-
 30.times do
 	Event.create(
 		start_date: Faker::Date.forward(days: 365),
@@ -44,4 +29,5 @@ puts 'Events de adminitrator created'
 		location: Faker::Address.city
 		)
 end
+
 puts 'The database has now #{Event.count} events'
