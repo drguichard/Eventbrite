@@ -15,7 +15,6 @@ User.create(
 	last_name:Faker::Name.last_name,
 	description:Faker::Lorem.paragraph,
 	email: "tguichard8@hotmail.com",
-	password:"testtest"
 )
 puts 'User created'
 30.times do
