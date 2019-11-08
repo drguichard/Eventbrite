@@ -15,8 +15,10 @@ User.create(
 	last_name:Faker::Name.last_name,
 	description:Faker::Lorem.paragraph,
 	email: "tguichard8@hotmail.com",
+	password:"password"
 )
 puts 'User created'
+​
 30.times do
 	Event.create(
 		start_date: Faker::Date.forward(days: 365),
@@ -28,5 +30,5 @@ puts 'User created'
 		location: Faker::Address.city
 		)
 end
-
+​
 puts 'The database has now #{Event.count} events'
